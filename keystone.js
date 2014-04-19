@@ -24,13 +24,18 @@ keystone.init({
 	'emails': 'templates/emails',
 	
 	'auto update': true,
-	
+
+	'google api key': process.env.GOOGLE_BROWSER_KEY,
+    	
 	'session': true,
 	'auth': true,
 	'user model': 'User',
 	'cookie secret': 'hxhP/qk-`k)![OKMt#i4r=STu)"KS9E1#fx00?t{Ih#IlC`LXT*JkT={pflqDcl-'
-	
+    
+    	
 });
+
+
 
 // Load your project's Models
 
@@ -44,6 +49,7 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
+	google_api_key: keystone.get('google api key'),
 	editable: keystone.content.editable
 });
 

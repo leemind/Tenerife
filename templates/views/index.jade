@@ -1,29 +1,42 @@
 extends ../layouts/tenerife
 
 block content
-	.container: .jumbotron
-		img(src='/images/logo.svg', width='160')
-		h1 Welcome Test
-		p This is your new <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a> website.
-		p It includes the latest versions of
-			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			| and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		p Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.
-		hr
-		if user && user.canAccessKeystone
-			p
-				a(href='/keystone/signin').btn.btn-lg.btn-primary Open the Admin UI
-		else
-			p We have created a default Admin user for you with the email <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.
-			p
-				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
-				|  to use the Admin UI.
-		hr
-		p Remember to <a href='https://github.com/JedWatson/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
-	.container
-		.col-md-8: h1 Col 1
-			is this still Col1?
-		.col-md-4 
-			h1 Col 2
-			p is this col2?
+    .container: .jumbotron
+        .col-md-8
+            h2 Welcome to Paradise in Tenerife
+            is this still Col1?
+        .col-md-4
+            img(src='images/outside.jpg', width='200')
+            h1 Col 2
+            p is this col2?
+
+        p This para is outside of the col struct
+        hr
+        if user && user.canAccessKeystone
+            p
+                a(href='/keystone/signin').btn.btn-lg.btn-primary Open the Admin UI
+    .container
+        #location-map.map(style="height:400px")
+            h2 xxxxxx
+
+
+block js
+    script(src!='https://maps.googleapis.com/maps/api/js?key=' + google_api_key + '&sensor=false')
+    script.
+        function initialize() {
+            var myLatLng = new google.maps.LatLng(28.1204712,-16.771233);
+            var mapOptions = {
+                center: myLatLng,
+                zoom: 16
+                };
+                
+            var map = new google.maps.Map(document.getElementById("location-map"), mapOptions);
+            var marker = new google.maps.Marker({position: myLatLng,title:"Where we are"});
+            marker.setMap(map);
+            var infowindow = new google.maps.InfoWindow({content: 'Paradise in Tenerife'});
+            google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);})
+            }
+            
+        google.maps.event.addDomListener(window, 'load', initialize);
+        
+        
