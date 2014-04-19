@@ -1,1 +1,1 @@
-Entire site based on Keystone
+Entire site based on Keystone.  Checkout Keystone
