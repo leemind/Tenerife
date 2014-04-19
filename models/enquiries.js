@@ -41,10 +41,10 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 		new keystone.Email('enquiry-notification').send({
 			to: admins,
 			from: {
-				name: 'Tenerife',
-				email: 'contact@tenerife.com'
+				name: 'www.tenerife-paradise.holiday',
+				email: 'contact@wwwtenerife-paradiseholiday.com'
 			},
-			subject: 'New Enquiry for Tenerife',
+			subject: 'New Enquiry for www.tenerife-paradise.holiday',
 			enquiry: enqiury
 		}, callback);
 		
