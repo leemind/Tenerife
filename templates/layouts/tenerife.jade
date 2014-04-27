@@ -56,13 +56,7 @@ html
 						ul.nav.navbar-nav.navbar-left
 							each link in navLinks
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-						ul.nav.navbar-nav.navbar-right
-							if user
-								if user.canAccessKeystone
-									li: a(href='/keystone') Open Keystone
-								li: a(href='/keystone/signout') Sign Out
-							else
-								li: a(href='/keystone/signin') Sign In
+
 
 		//- BODY
 		#body
@@ -84,10 +78,19 @@ html
 
 		//- FOOTER
 		.container: #footer
-
-			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
-			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
-
+			div(role="navigation").navbar.navbar-default
+				.container-fluid
+					ul.nav.navbar-nav.navbar-left 
+						p.navbar-text Powered by 
+							a(href='http://keystonejs.com' target='_blank') KeystoneJS.
+					ul.nav.navbar-nav.navbar-right
+						p.navbar-text
+							if user
+								if user.canAccessKeystone
+								a(href='/keystone') Open Keystone 
+									a(href='/keystone/signout') Sign Out
+							else
+								a(href='/keystone/signin') Sign In
 
 		//- JAVASCRIPT
 
