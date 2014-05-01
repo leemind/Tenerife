@@ -20,8 +20,12 @@
 
 var _ = require('underscore'),
 	keystone = require('keystone'),
+	i18n = require('i18n'),
 	middleware = require('./middleware'),
 	importRoutes = keystone.importer(__dirname);
+
+// Add-in i18n support
+keystone.pre('routes', i18n.init);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -29,7 +33,8 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views')
+	views: importRoutes('./views'),
+	api: importRoutes('./api')
 };
 
 // Setup Route Bindings
@@ -38,13 +43,19 @@ exports = module.exports = function(app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/apartment',routes.views.apartment);
-	//app.get('/prices',routes.views.prices);
+	app.get('/catering',routes.views.catering);
 	app.get('/book',routes.views.book);
 	app.get('/local',routes.views.local);
 	app.get('/gallery', routes.views.gallery);
 	app.all('/contact', routes.views.contact);
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
+	
+	app.get('/setLang?',routes.api.lang);
+	
+	console.log("routes/index.js");
+	console.log("###############");
+	
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

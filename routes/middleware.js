@@ -10,7 +10,8 @@
 
 var _ = require('underscore'),
 	querystring = require('querystring'),
-	keystone = require('keystone');
+	keystone = require('keystone')
+	i18n = require('i18n');
 
 
 /**
@@ -21,20 +22,28 @@ var _ = require('underscore'),
 	or replace it with your own templates / logic.
 */
 
+
 exports.initLocals = function(req, res, next) {
-	
+		
 	var locals = res.locals;
 	
 	locals.navLinks = [
-		{ label: 'Home',		key: 'home',		href: '/' },
-		{ label: 'The Apartment',	key: 'apartment',	href: '/apartment' },
-		/* { label: 'Prices',		key: 'prices',		href: '/prices' }, */
-		{ label: 'How to Book',		key: 'book',		href: '/book' },
-		{ label: 'Local Area',		key: 'local',		href: '/local' },
-		{ label: 'Blog',		key: 'blog',		href: '/blog' },
-		{ label: 'Gallery',		key: 'gallery',		href: '/gallery' },
-		{ label: 'Contact',		key: 'contact',		href: '/contact' }
+		{ label: i18n.__('home'),		key: 'home',		href: '/' },
+		{ label: i18n.__('apartment'),	key: 'apartment',	href: '/apartment' },
+		{ label: i18n.__('catering'),	key: 'catering',	href: '/catering' },
+		{ label: i18n.__('book'),		key: 'book',		href: '/book' },
+		{ label: i18n.__('area'),		key: 'local',		href: '/local' },
+		{ label: i18n.__('blog'),		key: 'blog',		href: '/blog' },
+		{ label: i18n.__('gallery'),	key: 'gallery',		href: '/gallery' },
+		{ label: i18n.__('contact'),	key: 'contact',		href: '/contact' }
 	];
+    
+	// set this so we can use it everywhere (in base jade template for example)
+    locals.languages = keystone.get('locales');
+	
+	console.log(locals.languages," Language set is:",i18n.getLocale());
+	
+	i18n.setLocale(locals.language);
 	
 	locals.user = req.user;
 	

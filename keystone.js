@@ -3,7 +3,9 @@
 require('dotenv')().load();
 
 // Require keystone
-var keystone = require('keystone');
+var keystone = require('keystone'),
+	i18n = require('i18n');
+
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -30,9 +32,10 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'cookie secret': 'hxhP/qk-`k)![OKMt#i4r=STu)"KS9E1#fx00?t{Ih#IlC`LXT*JkT={pflqDcl-'
-    
-    	
+	'cookie secret': 'hxhP/qk-`k)![OKMt#i4r=STu)"KS9E1#fx00?t{Ih#IlC`LXT*JkT={pflqDcl-',
+
+	'locales': ['en', 'es']
+
 });
 
 
@@ -50,7 +53,16 @@ keystone.set('locals', {
 	env: keystone.get('env'),
 	utils: keystone.utils,
 	google_api_key: keystone.get('google api key'),
-	editable: keystone.content.editable
+	editable: keystone.content.editable,
+	language: 'en'
+});
+
+// Configure i18n
+
+i18n.configure({
+		locales: keystone.get('locales'),
+		cookie: 'tenerife-paradise.holiday',
+		directory: __dirname + '/locales'
 });
 
 // Load your project's Routes
@@ -83,10 +95,10 @@ keystone.set('email locals', {
 
 keystone.set('email rules', [{
 	find: '/images/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/'
+	replace: (keystone.get('env') == 'production') ? 'http://tenerife-paradise.holiday/images/' : 'http://localhost:8000/images/'
 }, {
 	find: '/keystone/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/'
+	replace: (keystone.get('env') == 'production') ? 'http://tenerife-paradise.holiday/keystone/' : 'http://localhost:8000/keystone/'
 }]);
 
 // Load your project's email test routes
