@@ -34,7 +34,9 @@ keystone.init({
 	'user model': 'User',
 	'cookie secret': 'hxhP/qk-`k)![OKMt#i4r=STu)"KS9E1#fx00?t{Ih#IlC`LXT*JkT={pflqDcl-',
 
-	'locales': ['en', 'es']
+	'locales': ['en', 'es'],
+	
+	'language': 'default'
 
 });
 
@@ -54,7 +56,7 @@ keystone.set('locals', {
 	utils: keystone.utils,
 	google_api_key: keystone.get('google api key'),
 	editable: keystone.content.editable,
-	language: 'en'
+	language: 'default'
 });
 
 // Configure i18n

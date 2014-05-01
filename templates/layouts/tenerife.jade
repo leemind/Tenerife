@@ -51,14 +51,14 @@ html
 							span.icon-bar
 							span.icon-bar
 							span.icon-bar
-						a.navbar-brand(href='/') Tenerife
+						//- a.navbar-brand(href='/') Tenerife
 					.collapse.navbar-collapse
 						ul.nav.navbar-nav.navbar-left
 							each link in navLinks
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 						ul.nav.navbar-nav.navbar-right
 							each lang in languages
-								button.btn-default.btn-xs(onclick="setLang('#{lang}')") #{lang}
+								li.button.btn-default.btn-xs(onclick="setLang('#{lang}')") #{lang}
 								
 
 

@@ -26,25 +26,32 @@ var _ = require('underscore'),
 exports.initLocals = function(req, res, next) {
 		
 	var locals = res.locals;
+   
+	console.log("Middleware.js res language set is:",res.getLocale());
+    console.log("Middleware.js i18n language set is:",i18n.getLocale());
+	console.log("Middleware.js keystone language",keystone.get('language'));
+
 	
-	locals.navLinks = [
-		{ label: i18n.__('home'),		key: 'home',		href: '/' },
-		{ label: i18n.__('apartment'),	key: 'apartment',	href: '/apartment' },
-		{ label: i18n.__('catering'),	key: 'catering',	href: '/catering' },
-		{ label: i18n.__('book'),		key: 'book',		href: '/book' },
-		{ label: i18n.__('area'),		key: 'local',		href: '/local' },
-		{ label: i18n.__('blog'),		key: 'blog',		href: '/blog' },
-		{ label: i18n.__('gallery'),	key: 'gallery',		href: '/gallery' },
-		{ label: i18n.__('contact'),	key: 'contact',		href: '/contact' }
-	];
-    
+	if (keystone.get('language') != 'default')
+		{
+		locals.setLocale(keystone.get('language'));
+		}
+	
 	// set this so we can use it everywhere (in base jade template for example)
     locals.languages = keystone.get('locales');
-	
-	console.log(locals.languages," Language set is:",i18n.getLocale());
-	
-	i18n.setLocale(locals.language);
-	
+    
+	// Create the nav links (using language)
+	locals.navLinks = [
+		{ label: res.__('home'),		key: 'home',		href: '/' },
+		{ label: res.__('apartment'),	key: 'apartment',	href: '/apartment' },
+		{ label: res.__('catering'),	key: 'catering',	href: '/catering' },
+		{ label: res.__('book'),		key: 'book',		href: '/book' },
+		{ label: res.__('area'),		key: 'local',		href: '/local' },
+		{ label: res.__('blog'),		key: 'blog',		href: '/blog' },
+		{ label: res.__('gallery'),	    key: 'gallery',		href: '/gallery' },
+		{ label: res.__('contact'),	    key: 'contact',		href: '/contact' }
+	];
+    
 	locals.user = req.user;
 	
 	next();
