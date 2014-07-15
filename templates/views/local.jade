@@ -1,1 +1,45 @@
 extends ../layouts/tenerife
+
+block content
+    .container: .jumbotron
+        .row
+            .col-md-12
+                .h2=__("LocalWelcome")
+            .col-md-8
+                .h3=__("localbeachesH3")
+                p=__("LocalP1")
+                p=__("LocalP2")
+            .col-md-4
+                p
+                img(src='images/localarea1.jpg', width="100%")
+        .row
+            .col-md-4
+                p
+                img(src='images/beach.jpg', width="100%")
+                p
+                img(src='images/localarea2.jpg', width="100%")
+                p
+                img(src='images/localarea3.jpg', width="100%")
+            .col-md-8
+                .h3=__("localrestaurantsH3")
+                p=__("localrest1")
+                    a(href='https://www.facebook.com/puntaparaiso/timeline', target='_blank')="Punta Paraiso Facebook page"
+                p=__("localrest2") 
+                    a(href='http://www.restaurantelosroques.com/therestaurant/introduction/', target='_blank')="Los Roques"
+                p=__("localrest3")
+                .h3=__("shopping")
+                p
+                    a(href='http://www.costa-adeje.es/en/shopping/centro-comercial-plaza-del-duque', target='_blank')="Centro Comercial Plaza el Duque"
+                    span=__("shopping1")
+                p
+                    a(href='http://english.ccgransur.com/2010/04/shops-in-gransur/', target='_blank')="Centro Comercial Gran Sur"
+                    span=__("shopping2")
+                .h3=__("localfarmersmkts")
+                p
+                .h4=__("farmersadejeH4")
+                p=__("farmersadeje")
+                .h4=__("farmerssanjuanH4")
+                p=__("farmerssanjuan")
+                .h4=__("farmersasanisidroH4")
+                p=__("farmerssanisidro")
+

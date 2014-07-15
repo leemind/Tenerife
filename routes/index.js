@@ -46,12 +46,16 @@ exports = module.exports = function(app) {
 	app.get('/catering',routes.views.catering);
 	app.get('/book',routes.views.book);
 	app.get('/local',routes.views.local);
+	app.get('/services',routes.views.services);
+	app.get('/thingstodo',routes.views.thingstodo);
 	app.get('/gallery', routes.views.gallery);
 	app.all('/contact', routes.views.contact);
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
+//	app.get('/blog/:category?', routes.views.blog);
+//	app.get('/blog/post/:post', routes.views.post);
 	
 	app.get('/setLang?',routes.api.lang);
+//  app.get('/setLang?',middleware.nocache, routes.api.lang);
+
 	
 	console.log("routes/index.js");
 	console.log("###############");

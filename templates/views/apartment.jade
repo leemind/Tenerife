@@ -1,1 +1,22 @@
 extends ../layouts/tenerife
+
+block content
+    .container: .jumbotron
+        .row
+            .col-md-12
+                .h2=__("ApptWelcome")
+            .col-md-6  
+                p=__("ApptP1")
+                p
+                img(src='images/interior71.jpg', width="100%")
+                p
+                img(src='images/interior103.jpg', width="100%")
+                p
+                p=__("ApptP3")
+            .col-md-6
+                img(src='images/interior21.jpg', width="100%")
+                p
+                img(src='images/interior32.jpg', width="100%")
+                p
+                p=__("ApptP2")
+                

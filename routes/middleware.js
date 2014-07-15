@@ -44,10 +44,12 @@ exports.initLocals = function(req, res, next) {
 	locals.navLinks = [
 		{ label: res.__('home'),		key: 'home',		href: '/' },
 		{ label: res.__('apartment'),	key: 'apartment',	href: '/apartment' },
-		{ label: res.__('catering'),	key: 'catering',	href: '/catering' },
+//		{ label: res.__('catering'),	key: 'catering',	href: '/catering' },
 		{ label: res.__('book'),		key: 'book',		href: '/book' },
 		{ label: res.__('area'),		key: 'local',		href: '/local' },
-		{ label: res.__('blog'),		key: 'blog',		href: '/blog' },
+        { label: res.__('services'),    key: 'services',    href: '/services' },
+        { label: res.__('thingstodo'),  key: 'thingstodo',  href: '/thingstodo' },
+//		{ label: res.__('blog'),		key: 'blog',		href: '/blog' },
 		{ label: res.__('gallery'),	    key: 'gallery',		href: '/gallery' },
 		{ label: res.__('contact'),	    key: 'contact',		href: '/contact' }
 	];
@@ -92,4 +94,12 @@ exports.requireUser = function(req, res, next) {
 		next();
 	}
 	
+}
+
+/** Try and turn off caching when new lang is selected */
+exports.nocache = function (req, res, next) {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  next();
 }

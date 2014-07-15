@@ -2,12 +2,19 @@ extends ../layouts/tenerife
 
 block content
     .container: .jumbotron
-        p You can book our wonderful apartment through either of these great sites:
-        
-        p Airbnb 
-            a(href='http://www.airbnb.co.uk/rooms/2833471').btn.btn-lg.btn-primary Book with AirBnB
-        
-        p Holiday Lettings 
-            a(href='http://www.holidaylettings.co.uk/content/rentals/adeje/1718842').btn.btn-lg.btn-primary Book with Holiday Lettings
-        
-        .col-md-8
+        .row
+            .h3(style="text-align:center")=__("bookWelcome")
+            p
+            .col-md-4
+            .col-md-4
+                p: a(href='http://www.airbnb.co.uk/rooms/2833471', target='blank').btn.btn-lg.btn-primary.btn-block Book with AirBnB
+                p: a(href='http://www.holidaylettings.co.uk/content/rentals/adeje/1718842', target='blank').btn.btn-lg.btn-primary.btn-block Book with Holiday Lettings
+                p: a(href='http://www.housetrip.com/en/rentals/350861?guests=2&origin=search', target='blank').btn.btn-lg.btn-primary.btn-block Book with Housetrip
+            .col-md-4
+        .row
+            .col-md-4
+                img(src='images/pili028.jpg', width="100%")
+            .col-md-4
+                img(src='images/lacaleta041.jpg', width="100%")
+            .col-md-4
+                img(src='images/interior93.jpg', width="100%")

@@ -28,6 +28,9 @@ keystone.init({
 	'auto update': true,
 
 	'google api key': process.env.GOOGLE_BROWSER_KEY,
+    
+    'mandrill api key': process.env.MANDRILL_API_KEY,
+    'mandrill username': process.env.MANDRILL_USERNAME,
     	
 	'session': true,
 	'auth': true,

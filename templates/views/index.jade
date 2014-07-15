@@ -2,17 +2,17 @@ extends ../layouts/tenerife
 
 block content
     .container: .jumbotron
-        .col-md-8
-            h2=__("homeWelcome")
-            p=__("homeP1") 
-            p=__("homeP2")
-            p=__("homeP3")
-        .col-md-4
-            img(src='images/outside.jpg', width='300')
-            img(src='images/view1.jpg', width='300')
-            p is this col2?
+        .row
+            img(src='images/welcome.jpg', width='100%')
+            // p: h2(style="text-align:center")=__("homeWelcome")
+            p
+            .col-md-6 
+                p=__("homeP1") 
+                p=__("homeP2")
+                p=__("homeP3")
+            .col-md-6
+                img(src='images/outside2.jpg', width='100%')
 
-        p This para is outside of the col struct
         hr
         if user && user.canAccessKeystone
             p

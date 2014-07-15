@@ -3,5 +3,5 @@ function setLang(language) {
 	var request = new XMLHttpRequest(); 
 	request.open("GET","setLang?"+language,true);
 	request.send();
-	location.reload();
+	location.reload(true);
 }
