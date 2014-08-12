@@ -1,0 +1,52 @@
+extends ../layouts/tenerife
+
+block content
+    .container: .jumbotron
+        .row
+            .col-md-12
+                .h2=__("ServicesWelcome")
+                .row
+            .col-md-4
+            .col-md-8
+                .h3=__("servicessupermarketH3")
+        .row
+            .col-md-4
+                img(src='images/coviran.jpg', width='100%')
+                p
+                img(src='images/coviran1.jpg', width='100%')
+            .col-md-8
+                p=__("servicessupermarket")
+        .row
+            .col-md-4
+            .col-md-8
+                .h3=__("servicestaxiH3")
+        .row
+            .col-md-4
+                img(src='images/taxi.jpg', width='100%')
+            .col-md-8
+                p=__("servicestaxi")
+                p: a(href='http://www.taxiadeje.com/tarifas', target='_blank')="Radio Taxi Adeje"
+        .row
+            .col-md-4
+            .col-md-8
+                .h3=__("servicesbusH3")
+        .row
+            .col-md-4
+                img(src='images/bus.jpg', width='100%')
+            .col-md-8
+                p=__("servicesbus")
+                p: a(href='http://www.titsa.com/index.php?idioma=1', target='_blank')="Main Page"
+                    br
+                    a(href='http://www.titsa.com/index.php?accion=linea&IdLinea=472', target='_blank')="Line 472"
+        .row
+            .col-md-4
+            .col-md-8
+                .h3=__("servicespharmacyH3")
+        .row
+            .col-md-4
+                img(src='images/pharmacy.jpg', width='100%')
+            .col-md-8
+                p=__("servicespharmacy")
+                p: a(href='http://www.farmaciagonzalezalvarez.com/contacto', target='_blank')="Gonzalez Alvarez"
+                p=__("servicespharmacyP2")
+                p: a(href='https://www.dropbox.com/s/2icpwldxfwm17mq/Pharmacies.pdf', target='_blank')=__("pharmacieslist")
